@@ -9,7 +9,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { toast } from "sonner";
 import { supabase } from "@/lib/supabase";
 
-export function ConsultationForm() {
+export function ConsultationForm({ compact = false, onSuccess }: { compact?: boolean; onSuccess?: (data: { name: string; email: string }) => void }) {
   const [loading, setLoading] = useState(false);
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -30,9 +30,9 @@ export function ConsultationForm() {
         return;
       }
       
-      toast.success("Consultation scheduled! Our expert will contact you soon.");
+      toast.success("Details submitted! Now book your appointment slot.");
+      onSuccess?.({ name: data.full_name as string, email: data.email as string });
       form.reset();
-      window.scrollTo({ top: 0, behavior: 'smooth' });
     } catch (error) {
       console.error("Database submission error:", error);
       toast.error("Could not connect to the server. Please check your internet.");
@@ -41,19 +41,7 @@ export function ConsultationForm() {
     }
   };
 
-  return (
-    <div className="py-12 md:py-20">
-      <div className="container mx-auto px-6">
-        <div className="max-w-3xl mx-auto">
-          <div className="text-center mb-12">
-            <h1 className="text-4xl md:text-5xl font-extrabold text-foreground tracking-tight">
-              Schedule Your Immigration Consultation
-            </h1>
-            <p className="mt-4 text-lg text-muted-foreground">
-              Fill out the form below and our experts will help you navigate your journey.
-            </p>
-          </div>
-
+  const formContent = (
           <form onSubmit={handleSubmit} className="space-y-10">
             {/* Personal Information */}
             <section className="bg-white/80 backdrop-blur-md border border-border/50 rounded-3xl p-8 shadow-sm">
@@ -243,6 +231,23 @@ export function ConsultationForm() {
               </Button>
             </div>
           </form>
+  );
+
+  if (compact) return formContent;
+
+  return (
+    <div className="py-12 md:py-20">
+      <div className="container mx-auto px-6">
+        <div className="max-w-3xl mx-auto">
+          <div className="text-center mb-12">
+            <h1 className="text-4xl md:text-5xl font-extrabold text-foreground tracking-tight">
+              Schedule Your Immigration Consultation
+            </h1>
+            <p className="mt-4 text-lg text-muted-foreground">
+              Fill out the form below and our experts will help you navigate your journey.
+            </p>
+          </div>
+          {formContent}
         </div>
       </div>
     </div>

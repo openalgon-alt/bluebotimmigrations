@@ -9,11 +9,7 @@ export function SchedulePopup() {
   const [step, setStep] = useState<0 | 1 | 2 | 3>(0);
 
   useEffect(() => {
-    // Just ensure the widget is loaded, but keep it closed
-    const timer = setTimeout(() => {
-      setHasLoaded(true);
-    }, 1000);
-    return () => clearTimeout(timer);
+    setHasLoaded(true);
   }, []);
 
   useEffect(() => {
@@ -22,11 +18,11 @@ export function SchedulePopup() {
       
       const timer1 = setTimeout(() => {
         setStep(2); // Show message
-      }, 1500);
+      }, 400);
       
       const timer2 = setTimeout(() => {
         setStep(3); // Show button
-      }, 2300);
+      }, 700);
       
       return () => {
         clearTimeout(timer1);
