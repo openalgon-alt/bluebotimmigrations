@@ -15,8 +15,8 @@ export function Hero() {
       />
       <div className="absolute inset-0 bg-gradient-to-r from-primary/90 via-primary/70 to-primary/40" />
 
-      <div className="relative container mx-auto px-10 md:px-20 py-32 text-primary-foreground">
-        <div className="max-w-3xl animate-fade-up">
+      <div className="relative container mx-auto px-6 py-32 text-primary-foreground flex justify-center">
+        <div className="max-w-3xl animate-fade-up text-center">
           <span className="inline-flex items-center gap-2 rounded-full border border-primary-foreground/20 bg-primary-foreground/10 backdrop-blur px-4 py-1.5 text-xs font-medium">
             <ShieldCheck className="h-3.5 w-3.5" />
             Licensed Immigration Consultancy
@@ -33,7 +33,7 @@ export function Hero() {
             residency — backed by a team that turns complex paperwork into clear,
             confident next steps.
           </p>
-          <div className="mt-8 sm:mt-10 flex flex-col gap-2 sm:gap-3 sm:max-w-md w-full">
+          <div className="mt-8 sm:mt-10 flex flex-col gap-2 sm:gap-3 sm:max-w-md w-full mx-auto">
             {[
               "New Zealand — AEWV Process",
               "Canada — Provincial Nominee Program",
