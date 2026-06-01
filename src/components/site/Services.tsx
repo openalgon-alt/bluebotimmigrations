@@ -1,4 +1,4 @@
-import { Globe, MapPin, Landmark } from "lucide-react";
+import { Globe, MapPin, Landmark, Shield } from "lucide-react";
 
 const services = [
   {
@@ -35,6 +35,18 @@ const services = [
       "Document preparation & legalization",
       "Embassy appointment booking",
       "Visa interview preparation",
+    ],
+  },
+  {
+    icon: Shield,
+    title: "Israel — B1 Visa",
+    country: "Israel",
+    desc: "Comprehensive support for the Israel B1 work visa process. We assist with employer sponsorship coordination, documentation, embassy interview preparation, and ensure a smooth application experience from start to finish.",
+    highlights: [
+      "Employer sponsorship & invitation",
+      "Document preparation & attestation",
+      "Embassy interview coaching",
+      "Travel & arrival documentation",
     ],
   },
 ];

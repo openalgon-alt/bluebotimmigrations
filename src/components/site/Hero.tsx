@@ -37,7 +37,8 @@ export function Hero() {
             {[
               "New Zealand — AEWV Process",
               "Canada — Provincial Nominee Program",
-              "Europe — D-Type Visa"
+              "Europe — D-Type Visa",
+              "Israel — B1 Visa"
             ].map((service) => (
               <Link key={service} to="/services" className="bg-primary-foreground text-primary rounded-xl px-4 py-3 sm:px-5 sm:py-3.5 shadow-md hover:shadow-lg font-semibold text-sm sm:text-base flex items-center justify-between group transition-all hover:-translate-y-0.5">
                 <span>{service}</span>
