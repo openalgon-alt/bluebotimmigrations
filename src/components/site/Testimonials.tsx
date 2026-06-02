@@ -17,11 +17,11 @@ const items = [
     image: "/nz-approval-sampath.png",
   },
   {
-    name: "Dasari Shashikanth",
-    country: "USA B1/B2 Visa",
-    review: "Got my US B1/B2 Visa approved effortlessly! Huge thanks to the expert team.",
+    name: "Dilip Rathod",
+    country: "Israel B1 Visa",
+    review: "Got my Israel B1 Visa approved effortlessly! Huge thanks to the expert team.",
     rating: 5,
-    image: "/us-visa-dasari.png",
+    image: "/visa-photo.jpg",
   },
 ];
 

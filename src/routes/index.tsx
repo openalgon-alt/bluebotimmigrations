@@ -46,8 +46,8 @@ function Index() {
               <Link to="/testimonials" className="flex flex-col gap-4 md:gap-5 bg-primary text-primary-foreground rounded-[2rem] p-6 md:p-8 shadow-[0_20px_50px_-12px_rgba(12,42,92,0.4)] hover:shadow-[0_30px_60px_-15px_rgba(12,42,92,0.5)] hover:-translate-y-2 transition-all duration-500 cursor-pointer group">
                 <div className="relative w-full h-48 md:h-64 bg-white/10 rounded-xl overflow-hidden border border-white/20 shadow-inner">
                   <img 
-                    src="/us-visa-dasari.png" 
-                    alt="US B1/B2 Visa Approved" 
+                    src="/visa-photo.jpg" 
+                    alt="Israel B1 Visa Approved" 
                     className="absolute inset-0 w-full h-full object-contain p-2"
                   />
                   <div className="absolute top-2 right-2 bg-white rounded-full p-1 shadow-sm border border-border/50">
@@ -61,10 +61,10 @@ function Index() {
                     {'★★★★★'.split('').map((star, i) => <span key={i}>{star}</span>)}
                   </div>
                   <p className="text-sm text-center text-primary-foreground/90 italic font-medium leading-snug max-w-sm">
-                    "Got my US B1/B2 Visa approved effortlessly! Huge thanks to the expert team for their guidance."
+                    "Got my Israel B1 Visa approved effortlessly! Huge thanks to the expert team for their guidance."
                   </p>
                   <p className="text-xs text-center font-semibold text-primary-foreground/70 mt-3 tracking-wide uppercase group-hover:text-primary-foreground transition-colors">
-                    Dasari Shashikanth — US B1/B2 Visa
+                    Dilip Rathod — Israel B1 Visa
                   </p>
                 </div>
               </Link>
