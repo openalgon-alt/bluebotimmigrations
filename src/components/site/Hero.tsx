@@ -1,9 +1,18 @@
 import heroImg from "@/assets/hero-airport.jpg";
-import { Button } from "@/components/ui/button";
-import { ArrowRight, ShieldCheck } from "lucide-react";
+import { ShieldCheck } from "lucide-react";
 import { Link } from "@tanstack/react-router";
 
 export function Hero() {
+  // Define services with their respective routes to keep button styling uniform
+  const services = [
+    { name: "Study Abroad", path: "/study-abroad" },
+    { name: "New Zealand — AEWV Process", path: "/services" },
+    { name: "Canada — Provincial Nominee Program", path: "/services" },
+    { name: "Europe — D-Type Visa", path: "/services" },
+    { name: "Israel — B1 Visa", path: "/services" },
+    { name: "USA — Cap-Exempt H-1B Visa", path: "/services" }
+  ];
+
   return (
     <section id="home" className="relative min-h-screen flex items-center overflow-hidden">
       <img
@@ -33,15 +42,15 @@ export function Hero() {
             residency — backed by a team that turns complex paperwork into clear,
             confident next steps.
           </p>
+          
           <div className="mt-8 sm:mt-10 flex flex-col gap-2 sm:gap-3 sm:max-w-md w-full mx-auto">
-            {[
-              "New Zealand — AEWV Process",
-              "Canada — Provincial Nominee Program",
-              "Europe — D-Type Visa",
-              "Israel — B1 Visa"
-            ].map((service) => (
-              <Link key={service} to="/services" className="bg-primary-foreground text-primary rounded-xl px-4 py-3 sm:px-5 sm:py-3.5 shadow-md hover:shadow-lg font-semibold text-sm sm:text-base flex items-center justify-between group transition-all hover:-translate-y-0.5">
-                <span>{service}</span>
+            {services.map((service) => (
+              <Link 
+                key={service.name} 
+                to={service.path} 
+                className="bg-primary-foreground text-primary rounded-xl px-4 py-3 sm:px-5 sm:py-3.5 shadow-md hover:shadow-lg font-semibold text-sm sm:text-base flex items-center justify-between group transition-all hover:-translate-y-0.5"
+              >
+                <span>{service.name}</span>
                 <ShieldCheck className="h-4 w-4 sm:h-5 sm:w-5 text-primary/40 group-hover:text-primary transition-colors shrink-0" />
               </Link>
             ))}

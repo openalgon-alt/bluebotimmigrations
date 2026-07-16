@@ -1,4 +1,4 @@
-import { Plane, Mail, Phone, MapPin } from "lucide-react";
+import { Mail, Phone, MapPin } from "lucide-react";
 import { Link } from "@tanstack/react-router";
 
 export function Footer() {
@@ -7,12 +7,16 @@ export function Footer() {
       <div className="container mx-auto px-6 py-10">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-12 mb-10">
           <div className="space-y-6">
-            <div className="flex items-center gap-2">
-              <span className="inline-flex items-center justify-center h-10 w-10 rounded-lg bg-primary-foreground/10">
-                <Plane className="h-5 w-5" />
-              </span>
-              <span className="text-lg font-bold tracking-wide">bluedotImmigration</span>
+            
+            {/* UPDATED LOGO BLOCK */}
+            <div className="flex items-center">
+              <img 
+                src="/logo.jpeg" 
+                alt="bluedotImmigrations Logo" 
+                className="h-12 md:h-14 w-auto object-contain bg-white rounded px-2 py-1" 
+              />
             </div>
+
             <p className="text-sm text-primary-foreground/70 leading-relaxed max-w-xs">
               Expert guidance for visas, study abroad, work permits, and permanent residency worldwide.
             </p>
@@ -23,7 +27,7 @@ export function Footer() {
             <ul className="space-y-4 text-sm text-primary-foreground/70">
               <li><Link to="/" className="hover:text-primary-foreground transition-colors">Home</Link></li>
               <li><Link to="/services" className="hover:text-primary-foreground transition-colors">Services</Link></li>
-              <li><Link to="/testimonials" className="hover:text-primary-foreground transition-colors">Testimonials</Link></li>
+              <li><Link to="/testimonials" className="hover:text-primary-foreground transition-colors">Success Stories</Link></li>
               <li><Link to="/contact" className="hover:text-primary-foreground transition-colors">Contact</Link></li>
             </ul>
           </div>
@@ -37,7 +41,7 @@ export function Footer() {
               </li>
               <li className="flex items-center gap-3">
                 <Phone className="h-5 w-5 shrink-0 text-primary-foreground/50" />
-                <span>+91 7075509602</span>
+                <span>+91 7892706982</span>
               </li>
               <li className="flex items-center gap-3">
                 <Mail className="h-5 w-5 shrink-0 text-primary-foreground/50" />

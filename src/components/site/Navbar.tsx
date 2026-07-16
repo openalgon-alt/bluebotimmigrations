@@ -1,12 +1,12 @@
 import { useEffect, useState } from "react";
-import { Menu, X, Plane } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Link, useLocation } from "@tanstack/react-router";
 
 const links = [
   { href: "/", label: "Home" },
   { href: "/services", label: "Services" },
-  { href: "/testimonials", label: "Testimonials" },
+  { href: "/testimonials", label: "Success Stories" },
   { href: "/contact", label: "Contact" },
 ];
 
@@ -23,7 +23,6 @@ export function Navbar() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  // On the home page, use transparent/scrolled logic. On other pages, always use the "scrolled" (solid) style.
   const solid = !isHome || scrolled;
 
   return (
@@ -35,13 +34,14 @@ export function Navbar() {
       }`}
     >
       <div className="container mx-auto px-6 h-16 flex items-center justify-between">
-        <Link to="/" className="flex items-center gap-2 group">
-          <span className="inline-flex items-center justify-center h-9 w-9 rounded-lg bg-gradient-hero text-primary-foreground shadow-card">
-            <Plane className="h-4 w-4" />
-          </span>
-          <span className={`font-semibold tracking-tight text-lg ${solid ? "text-foreground" : "text-primary-foreground"}`}>
-            bluedot<span className={solid ? "text-gradient-scrolled" : "text-gradient"}>Immigration</span>
-          </span>
+        
+        {/* UPDATED LOGO BLOCK */}
+        <Link to="/" className="flex items-center group">
+          <img 
+            src="/logo.jpeg" 
+            alt="bluedotImmigrations Logo" 
+            className="h-10 md:h-12 w-auto object-contain bg-white rounded px-2 py-1 shadow-sm transition-transform duration-300 group-hover:scale-105" 
+          />
         </Link>
 
         <nav className="hidden md:flex items-center gap-8">
