@@ -27,7 +27,7 @@ export function Footer() {
             <ul className="space-y-4 text-sm text-primary-foreground/70">
               <li><Link to="/" className="hover:text-primary-foreground transition-colors">Home</Link></li>
               <li><Link to="/services" className="hover:text-primary-foreground transition-colors">Services</Link></li>
-              <li><Link to="/testimonials" className="hover:text-primary-foreground transition-colors">Success Stories</Link></li>
+              <li><Link to="/testimonials" className="hover:text-primary-foreground transition-colors">Testimonials</Link></li>
               <li><Link to="/contact" className="hover:text-primary-foreground transition-colors">Contact</Link></li>
             </ul>
           </div>
@@ -41,7 +41,7 @@ export function Footer() {
               </li>
               <li className="flex items-center gap-3">
                 <Phone className="h-5 w-5 shrink-0 text-primary-foreground/50" />
-                <span>+91 7892706982</span>
+                <span>+91 7075509602</span>
               </li>
               <li className="flex items-center gap-3">
                 <Mail className="h-5 w-5 shrink-0 text-primary-foreground/50" />

@@ -6,7 +6,7 @@ import { Link, useLocation } from "@tanstack/react-router";
 const links = [
   { href: "/", label: "Home" },
   { href: "/services", label: "Services" },
-  { href: "/testimonials", label: "Success Stories" },
+  { href: "/testimonials", label: "Testimonials" },
   { href: "/contact", label: "Contact" },
 ];
 
