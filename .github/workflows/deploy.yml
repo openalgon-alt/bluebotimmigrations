@@ -1,0 +1,50 @@
+name: Deploy to Hostinger
+
+on:
+  push:
+    branches:
+      - main  # Trigger deployment on push to the main branch
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'npm'
+
+      - name: Install Dependencies
+        run: npm ci
+
+      - name: Build Project
+        run: npm run build
+
+      - name: Prepare Deployment Directory
+        run: |
+          mkdir -p deploy
+          # Copy the server output and client assets
+          cp -r dist deploy/
+          # Copy static files to the public folder where Passenger expects it
+          cp -r dist/client deploy/public
+          # Copy the startup script and package.json
+          cp server.js deploy/
+          cp package.json deploy/
+          # Create tmp folder and touch restart.txt to trigger Passenger app reload
+          mkdir -p deploy/tmp
+          touch deploy/tmp/restart.txt
+
+      - name: Deploy to Hostinger via FTP
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        with:
+          server: ${{ secrets.FTP_SERVER }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          local-dir: ./deploy/
+          server-dir: /public_html/  # Change this to subfolder if needed (e.g. /public_html/bluebot)
+          dangerous-clean-slate: false
