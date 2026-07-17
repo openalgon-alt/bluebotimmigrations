@@ -4,7 +4,7 @@
 // to execute the compiled Vinxi server handler.
 
 import http from 'http';
-import server from './dist/server/server.js'; // Import the compiled Vinxi server handler
+import server from './dist/server/index.js'; // Import the compiled Vinxi server handler
 
 const port = process.env.PORT || 3000;
 
