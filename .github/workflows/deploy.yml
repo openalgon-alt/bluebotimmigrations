@@ -3,7 +3,7 @@ name: Deploy to Hostinger
 on:
   push:
     branches:
-      - main  # Trigger deployment on push to the main branch
+      - main # Trigger deployment on push to the main branch
 
 jobs:
   build-and-deploy:
@@ -17,7 +17,7 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 20
-          cache: 'npm'
+          cache: "npm"
 
       - name: Install Dependencies
         run: npm ci
@@ -46,5 +46,5 @@ jobs:
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
           local-dir: ./deploy/
-          server-dir: /public_html/  # Change this to subfolder if needed (e.g. /public_html/bluebot)
+          server-dir: /public_html/ # Change this to subfolder if needed (e.g. /public_html/bluebot)
           dangerous-clean-slate: false

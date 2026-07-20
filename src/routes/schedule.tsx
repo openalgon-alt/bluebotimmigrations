@@ -7,7 +7,13 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 import { toast } from "sonner";
 import { Toaster } from "@/components/ui/sonner";
 import { supabase } from "@/lib/supabase";
@@ -52,8 +58,7 @@ function SchedulePage() {
     goal_description: "",
   });
 
-  const set = (field: string, value: string) =>
-    setForm((prev) => ({ ...prev, [field]: value }));
+  const set = (field: string, value: string) => setForm((prev) => ({ ...prev, [field]: value }));
 
   // Load Calendly script
   useEffect(() => {
@@ -61,7 +66,9 @@ function SchedulePage() {
     script.src = "https://assets.calendly.com/assets/external/widget.js";
     script.async = true;
     document.body.appendChild(script);
-    return () => { document.body.removeChild(script); };
+    return () => {
+      document.body.removeChild(script);
+    };
   }, []);
 
   // Re-init Calendly with prefilled data after form submit
@@ -114,25 +121,57 @@ function SchedulePage() {
               {/* 1 — Personal Information */}
               <section className="bg-white/80 backdrop-blur-md border border-border/50 rounded-3xl p-8 shadow-sm">
                 <div className="flex items-center gap-3 mb-6">
-                  <div className="p-2.5 bg-primary/10 rounded-xl text-primary"><User className="w-5 h-5" /></div>
+                  <div className="p-2.5 bg-primary/10 rounded-xl text-primary">
+                    <User className="w-5 h-5" />
+                  </div>
                   <h2 className="text-xl font-bold text-foreground">Personal Information</h2>
                 </div>
                 <div className="grid sm:grid-cols-2 gap-5">
                   <div className="space-y-2">
                     <Label htmlFor="full_name">Full Name *</Label>
-                    <Input id="full_name" required value={form.full_name} onChange={(e) => set("full_name", e.target.value)} placeholder="John Doe" className="rounded-xl h-12" />
+                    <Input
+                      id="full_name"
+                      required
+                      value={form.full_name}
+                      onChange={(e) => set("full_name", e.target.value)}
+                      placeholder="John Doe"
+                      className="rounded-xl h-12"
+                    />
                   </div>
                   <div className="space-y-2">
                     <Label htmlFor="email">Email Address *</Label>
-                    <Input id="email" type="email" required value={form.email} onChange={(e) => set("email", e.target.value)} placeholder="john@example.com" className="rounded-xl h-12" />
+                    <Input
+                      id="email"
+                      type="email"
+                      required
+                      value={form.email}
+                      onChange={(e) => set("email", e.target.value)}
+                      placeholder="john@example.com"
+                      className="rounded-xl h-12"
+                    />
                   </div>
                   <div className="space-y-2">
                     <Label htmlFor="phone">Phone Number *</Label>
-                    <Input id="phone" type="tel" required value={form.phone} onChange={(e) => set("phone", e.target.value)} placeholder="+91 98765 43210" className="rounded-xl h-12" />
+                    <Input
+                      id="phone"
+                      type="tel"
+                      required
+                      value={form.phone}
+                      onChange={(e) => set("phone", e.target.value)}
+                      placeholder="+91 98765 43210"
+                      className="rounded-xl h-12"
+                    />
                   </div>
                   <div className="space-y-2">
                     <Label htmlFor="city">Current City *</Label>
-                    <Input id="city" required value={form.city} onChange={(e) => set("city", e.target.value)} placeholder="Hyderabad" className="rounded-xl h-12" />
+                    <Input
+                      id="city"
+                      required
+                      value={form.city}
+                      onChange={(e) => set("city", e.target.value)}
+                      placeholder="Hyderabad"
+                      className="rounded-xl h-12"
+                    />
                   </div>
                 </div>
               </section>
@@ -140,13 +179,22 @@ function SchedulePage() {
               {/* 2 — Consultation Type & Destination */}
               <section className="bg-white/80 backdrop-blur-md border border-border/50 rounded-3xl p-8 shadow-sm">
                 <div className="flex items-center gap-3 mb-6">
-                  <div className="p-2.5 bg-primary/10 rounded-xl text-primary"><Target className="w-5 h-5" /></div>
+                  <div className="p-2.5 bg-primary/10 rounded-xl text-primary">
+                    <Target className="w-5 h-5" />
+                  </div>
                   <h2 className="text-xl font-bold text-foreground">Service & Destination</h2>
                 </div>
                 <div className="space-y-5">
                   <div className="space-y-3">
-                    <p className="text-sm font-medium text-muted-foreground">Select the service you need: *</p>
-                    <RadioGroup value={form.consultation_type} onValueChange={(v) => set("consultation_type", v)} required className="grid sm:grid-cols-2 gap-3">
+                    <p className="text-sm font-medium text-muted-foreground">
+                      Select the service you need: *
+                    </p>
+                    <RadioGroup
+                      value={form.consultation_type}
+                      onValueChange={(v) => set("consultation_type", v)}
+                      required
+                      className="grid sm:grid-cols-2 gap-3"
+                    >
                       {[
                         "Work Visa Consultation",
                         "Job Assistance Abroad",
@@ -156,9 +204,17 @@ function SchedulePage() {
                         "Dependent Visa",
                         "Immigration Eligibility Check",
                       ].map((type) => (
-                        <div key={type} className="flex items-center space-x-3 bg-secondary/30 p-3.5 rounded-xl hover:bg-secondary/50 transition-colors cursor-pointer">
+                        <div
+                          key={type}
+                          className="flex items-center space-x-3 bg-secondary/30 p-3.5 rounded-xl hover:bg-secondary/50 transition-colors cursor-pointer"
+                        >
                           <RadioGroupItem value={type} id={`ct-${type}`} />
-                          <Label htmlFor={`ct-${type}`} className="cursor-pointer font-medium text-sm">{type}</Label>
+                          <Label
+                            htmlFor={`ct-${type}`}
+                            className="cursor-pointer font-medium text-sm"
+                          >
+                            {type}
+                          </Label>
                         </div>
                       ))}
                     </RadioGroup>
@@ -168,7 +224,13 @@ function SchedulePage() {
                       <MapPin className="w-4 h-4 text-primary" />
                       <Label>Target Country *</Label>
                     </div>
-                    <Input required value={form.destination} onChange={(e) => set("destination", e.target.value)} placeholder="e.g. Canada, Germany, Australia" className="rounded-xl h-12" />
+                    <Input
+                      required
+                      value={form.destination}
+                      onChange={(e) => set("destination", e.target.value)}
+                      placeholder="e.g. Canada, Germany, Australia"
+                      className="rounded-xl h-12"
+                    />
                   </div>
                 </div>
               </section>
@@ -176,15 +238,23 @@ function SchedulePage() {
               {/* 3 — Education & Career */}
               <section className="bg-white/80 backdrop-blur-md border border-border/50 rounded-3xl p-8 shadow-sm">
                 <div className="flex items-center gap-3 mb-6">
-                  <div className="p-2.5 bg-primary/10 rounded-xl text-primary"><GraduationCap className="w-5 h-5" /></div>
+                  <div className="p-2.5 bg-primary/10 rounded-xl text-primary">
+                    <GraduationCap className="w-5 h-5" />
+                  </div>
                   <h2 className="text-xl font-bold text-foreground">Education & Career</h2>
                 </div>
                 <div className="space-y-6">
                   <div className="grid sm:grid-cols-2 gap-5">
                     <div className="space-y-2">
                       <Label>Highest Qualification *</Label>
-                      <Select value={form.qualification} onValueChange={(v) => set("qualification", v)} required>
-                        <SelectTrigger className="rounded-xl h-12"><SelectValue placeholder="Select Qualification" /></SelectTrigger>
+                      <Select
+                        value={form.qualification}
+                        onValueChange={(v) => set("qualification", v)}
+                        required
+                      >
+                        <SelectTrigger className="rounded-xl h-12">
+                          <SelectValue placeholder="Select Qualification" />
+                        </SelectTrigger>
                         <SelectContent>
                           <SelectItem value="Diploma">Diploma</SelectItem>
                           <SelectItem value="Bachelor's Degree">Bachelor's Degree</SelectItem>
@@ -195,23 +265,44 @@ function SchedulePage() {
                     </div>
                     <div className="space-y-2">
                       <Label>Field of Study *</Label>
-                      <Input required value={form.field_of_study} onChange={(e) => set("field_of_study", e.target.value)} placeholder="Computer Science" className="rounded-xl h-12" />
+                      <Input
+                        required
+                        value={form.field_of_study}
+                        onChange={(e) => set("field_of_study", e.target.value)}
+                        placeholder="Computer Science"
+                        className="rounded-xl h-12"
+                      />
                     </div>
                   </div>
 
                   <div className="border-t border-border/30 pt-5">
                     <div className="flex items-center gap-3 mb-4">
-                      <div className="p-2.5 bg-primary/10 rounded-xl text-primary"><Briefcase className="w-5 h-5" /></div>
+                      <div className="p-2.5 bg-primary/10 rounded-xl text-primary">
+                        <Briefcase className="w-5 h-5" />
+                      </div>
                       <h3 className="text-base font-bold text-foreground">Work Experience</h3>
                     </div>
                     <div className="space-y-4">
                       <div className="space-y-2">
                         <Label>Employment Status *</Label>
-                        <RadioGroup value={form.employment_status} onValueChange={(v) => set("employment_status", v)} required className="flex flex-wrap gap-3">
+                        <RadioGroup
+                          value={form.employment_status}
+                          onValueChange={(v) => set("employment_status", v)}
+                          required
+                          className="flex flex-wrap gap-3"
+                        >
                           {["Student", "Employed", "Self-Employed", "Unemployed"].map((s) => (
-                            <div key={s} className="flex items-center space-x-2 bg-secondary/30 px-4 py-2.5 rounded-xl">
+                            <div
+                              key={s}
+                              className="flex items-center space-x-2 bg-secondary/30 px-4 py-2.5 rounded-xl"
+                            >
                               <RadioGroupItem value={s} id={`es-${s}`} />
-                              <Label htmlFor={`es-${s}`} className="font-medium text-sm cursor-pointer">{s}</Label>
+                              <Label
+                                htmlFor={`es-${s}`}
+                                className="font-medium text-sm cursor-pointer"
+                              >
+                                {s}
+                              </Label>
                             </div>
                           ))}
                         </RadioGroup>
@@ -219,16 +310,32 @@ function SchedulePage() {
                       <div className="grid sm:grid-cols-3 gap-5">
                         <div className="space-y-2">
                           <Label>Job Title</Label>
-                          <Input value={form.job_title} onChange={(e) => set("job_title", e.target.value)} placeholder="Software Engineer" className="rounded-xl h-12" />
+                          <Input
+                            value={form.job_title}
+                            onChange={(e) => set("job_title", e.target.value)}
+                            placeholder="Software Engineer"
+                            className="rounded-xl h-12"
+                          />
                         </div>
                         <div className="space-y-2">
                           <Label>Industry</Label>
-                          <Input value={form.industry} onChange={(e) => set("industry", e.target.value)} placeholder="Technology" className="rounded-xl h-12" />
+                          <Input
+                            value={form.industry}
+                            onChange={(e) => set("industry", e.target.value)}
+                            placeholder="Technology"
+                            className="rounded-xl h-12"
+                          />
                         </div>
                         <div className="space-y-2">
                           <Label>Experience *</Label>
-                          <Select value={form.experience_years} onValueChange={(v) => set("experience_years", v)} required>
-                            <SelectTrigger className="rounded-xl h-12"><SelectValue placeholder="Select" /></SelectTrigger>
+                          <Select
+                            value={form.experience_years}
+                            onValueChange={(v) => set("experience_years", v)}
+                            required
+                          >
+                            <SelectTrigger className="rounded-xl h-12">
+                              <SelectValue placeholder="Select" />
+                            </SelectTrigger>
                             <SelectContent>
                               <SelectItem value="Fresher">Fresher</SelectItem>
                               <SelectItem value="1–2 Years">1–2 Years</SelectItem>
@@ -246,7 +353,9 @@ function SchedulePage() {
               {/* 4 — Goal */}
               <section className="bg-white/80 backdrop-blur-md border border-border/50 rounded-3xl p-8 shadow-sm">
                 <div className="flex items-center gap-3 mb-6">
-                  <div className="p-2.5 bg-primary/10 rounded-xl text-primary"><Target className="w-5 h-5" /></div>
+                  <div className="p-2.5 bg-primary/10 rounded-xl text-primary">
+                    <Target className="w-5 h-5" />
+                  </div>
                   <h2 className="text-xl font-bold text-foreground">Immigration / Career Goal</h2>
                 </div>
                 <div className="space-y-2">
@@ -269,18 +378,28 @@ function SchedulePage() {
                   disabled={submitting || submitted}
                   className="w-full md:w-auto px-12 py-7 text-lg font-bold rounded-2xl shadow-xl shadow-primary/20 hover:scale-[1.02] transition-transform"
                 >
-                  {submitting ? "Saving..." : submitted ? "✓ Details Submitted" : (
-                    <><Send className="w-5 h-5 mr-2" /> Submit & Book Appointment</>
+                  {submitting ? (
+                    "Saving..."
+                  ) : submitted ? (
+                    "✓ Details Submitted"
+                  ) : (
+                    <>
+                      <Send className="w-5 h-5 mr-2" /> Submit & Book Appointment
+                    </>
                   )}
                 </Button>
               </div>
             </form>
 
             {/* 5 — Calendly Booking */}
-            <section className={`mt-10 transition-all duration-500 ${submitted ? "opacity-100 translate-y-0" : "opacity-40 pointer-events-none translate-y-2"}`}>
+            <section
+              className={`mt-10 transition-all duration-500 ${submitted ? "opacity-100 translate-y-0" : "opacity-40 pointer-events-none translate-y-2"}`}
+            >
               <div className="bg-white/80 backdrop-blur-md border border-border/50 rounded-3xl shadow-sm overflow-hidden">
                 <div className="flex items-center gap-3 p-8 pb-0">
-                  <div className={`p-2.5 rounded-xl ${submitted ? "bg-green-100 text-green-600" : "bg-primary/10 text-primary"}`}>
+                  <div
+                    className={`p-2.5 rounded-xl ${submitted ? "bg-green-100 text-green-600" : "bg-primary/10 text-primary"}`}
+                  >
                     <CalendarCheck className="w-5 h-5" />
                   </div>
                   <div>

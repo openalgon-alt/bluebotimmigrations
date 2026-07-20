@@ -13,9 +13,7 @@ export function PageLayout({ children }: { children: React.ReactNode }) {
       </div>
 
       <Navbar />
-      <main className="pt-16">
-        {children}
-      </main>
+      <main className="pt-16">{children}</main>
       <Footer />
       <Toaster richColors position="top-center" />
     </div>

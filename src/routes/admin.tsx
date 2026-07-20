@@ -1,9 +1,21 @@
 import { createFileRoute, redirect } from "@tanstack/react-router";
 import { useState, useEffect } from "react";
 import { supabase } from "@/lib/supabase";
-import { 
-  LogOut, Mail, Phone, MessageSquare, User, Clock, RefreshCw, 
-  ShieldAlert, Calendar, MapPin, Briefcase, GraduationCap, Target, ExternalLink
+import {
+  LogOut,
+  Mail,
+  Phone,
+  MessageSquare,
+  User,
+  Clock,
+  RefreshCw,
+  ShieldAlert,
+  Calendar,
+  MapPin,
+  Briefcase,
+  GraduationCap,
+  Target,
+  ExternalLink,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -55,11 +67,16 @@ function AdminPage() {
 
   useEffect(() => {
     const checkSession = async () => {
-      const { data: { session } } = await supabase.auth.getSession();
+      const {
+        data: { session },
+      } = await supabase.auth.getSession();
       if (session?.user) {
         setAuthed(true);
         sessionStorage.setItem("admin_authed", "true");
-      } else if (typeof window !== "undefined" && sessionStorage.getItem("admin_authed") === "true") {
+      } else if (
+        typeof window !== "undefined" &&
+        sessionStorage.getItem("admin_authed") === "true"
+      ) {
         setAuthed(true);
       }
     };
@@ -95,9 +112,9 @@ function AdminPage() {
     try {
       const [enqRes, appRes] = await Promise.all([
         supabase.from("enquiries").select("*").order("created_at", { ascending: false }),
-        supabase.from("appointments").select("*").order("created_at", { ascending: false })
+        supabase.from("appointments").select("*").order("created_at", { ascending: false }),
       ]);
-      
+
       if (enqRes.data) setEnquiries(enqRes.data);
       if (appRes.data) setAppointments(appRes.data);
     } catch (err) {
@@ -120,36 +137,36 @@ function AdminPage() {
               <ShieldAlert className="w-8 h-8 text-white" />
             </div>
             <h1 className="text-2xl font-bold text-foreground">Admin Panel</h1>
-            <p className="text-sm text-muted-foreground mt-1">bluedotImmigration — Enquiries Dashboard</p>
+            <p className="text-sm text-muted-foreground mt-1">
+              bluedotImmigration — Enquiries Dashboard
+            </p>
           </div>
           <form onSubmit={handleLogin} className="space-y-4">
-  <div className="space-y-2">
-    <label className="text-sm font-medium text-foreground">Email</label>
-    <Input
-      type="email"
-      value={email}
-      onChange={(e) => setEmail(e.target.value)}
-      placeholder="Enter admin email"
-      required
-    />
-  </div>
-  <div className="space-y-2">
-    <label className="text-sm font-medium text-foreground">Password</label>
-    <Input
-      type="password"
-      value={password}
-      onChange={(e) => setPassword(e.target.value)}
-      placeholder="Enter admin password"
-      required
-    />
-  </div>
-  {loginError && (
-    <p className="text-sm text-red-500 font-medium">{loginError}</p>
-  )}
-  <Button type="submit" className="w-full" size="lg">
-    Login to Dashboard
-  </Button>
-</form>
+            <div className="space-y-2">
+              <label className="text-sm font-medium text-foreground">Email</label>
+              <Input
+                type="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                placeholder="Enter admin email"
+                required
+              />
+            </div>
+            <div className="space-y-2">
+              <label className="text-sm font-medium text-foreground">Password</label>
+              <Input
+                type="password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                placeholder="Enter admin password"
+                required
+              />
+            </div>
+            {loginError && <p className="text-sm text-red-500 font-medium">{loginError}</p>}
+            <Button type="submit" className="w-full" size="lg">
+              Login to Dashboard
+            </Button>
+          </form>
         </div>
       </div>
     );
@@ -195,11 +212,23 @@ function AdminPage() {
         <Tabs defaultValue="appointments" className="space-y-8">
           <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-6 bg-white p-6 rounded-3xl border shadow-sm">
             <TabsList className="bg-slate-100 p-1 rounded-xl h-auto">
-              <TabsTrigger value="appointments" className="rounded-lg py-2.5 px-6 data-[state=active]:bg-white data-[state=active]:shadow-sm">
-                Appointments <Badge className="ml-2 bg-primary/10 text-primary hover:bg-primary/20 border-none">{appointments.length}</Badge>
+              <TabsTrigger
+                value="appointments"
+                className="rounded-lg py-2.5 px-6 data-[state=active]:bg-white data-[state=active]:shadow-sm"
+              >
+                Appointments{" "}
+                <Badge className="ml-2 bg-primary/10 text-primary hover:bg-primary/20 border-none">
+                  {appointments.length}
+                </Badge>
               </TabsTrigger>
-              <TabsTrigger value="enquiries" className="rounded-lg py-2.5 px-6 data-[state=active]:bg-white data-[state=active]:shadow-sm">
-                Quick Enquiries <Badge className="ml-2 bg-slate-200 text-slate-600 hover:bg-slate-300 border-none">{enquiries.length}</Badge>
+              <TabsTrigger
+                value="enquiries"
+                className="rounded-lg py-2.5 px-6 data-[state=active]:bg-white data-[state=active]:shadow-sm"
+              >
+                Quick Enquiries{" "}
+                <Badge className="ml-2 bg-slate-200 text-slate-600 hover:bg-slate-300 border-none">
+                  {enquiries.length}
+                </Badge>
               </TabsTrigger>
             </TabsList>
 
@@ -207,8 +236,12 @@ function AdminPage() {
               <div className="text-right">
                 <div className="text-sm text-muted-foreground font-medium">Today's Traffic</div>
                 <div className="text-2xl font-bold text-primary">
-                  {appointments.filter(a => new Date(a.created_at).toDateString() === new Date().toDateString()).length + 
-                   enquiries.filter(e => new Date(e.created_at).toDateString() === new Date().toDateString()).length}
+                  {appointments.filter(
+                    (a) => new Date(a.created_at).toDateString() === new Date().toDateString(),
+                  ).length +
+                    enquiries.filter(
+                      (e) => new Date(e.created_at).toDateString() === new Date().toDateString(),
+                    ).length}
                 </div>
               </div>
             </div>
@@ -217,7 +250,9 @@ function AdminPage() {
           <TabsContent value="appointments" className="mt-0">
             {loading && appointments.length === 0 ? (
               <div className="grid gap-6">
-                {[1, 2, 3].map(i => <div key={i} className="h-48 bg-white rounded-3xl animate-pulse border" />)}
+                {[1, 2, 3].map((i) => (
+                  <div key={i} className="h-48 bg-white rounded-3xl animate-pulse border" />
+                ))}
               </div>
             ) : appointments.length === 0 ? (
               <Card className="border-dashed border-2 bg-transparent shadow-none rounded-[2rem]">
@@ -230,7 +265,10 @@ function AdminPage() {
             ) : (
               <div className="grid gap-6">
                 {appointments.map((app) => (
-                  <Card key={app.id} className="overflow-hidden border-none shadow-md hover:shadow-xl transition-all duration-300 rounded-[2rem] bg-white group">
+                  <Card
+                    key={app.id}
+                    className="overflow-hidden border-none shadow-md hover:shadow-xl transition-all duration-300 rounded-[2rem] bg-white group"
+                  >
                     <div className="absolute top-0 left-0 w-2 h-full bg-primary" />
                     <CardHeader className="pb-4">
                       <div className="flex justify-between items-start">
@@ -239,9 +277,14 @@ function AdminPage() {
                             {app.full_name.charAt(0)}
                           </div>
                           <div>
-                            <CardTitle className="text-2xl font-bold tracking-tight">{app.full_name}</CardTitle>
+                            <CardTitle className="text-2xl font-bold tracking-tight">
+                              {app.full_name}
+                            </CardTitle>
                             <CardDescription className="flex items-center gap-2 mt-1">
-                              <Badge variant="secondary" className="bg-primary/10 text-primary hover:bg-primary/10 border-none rounded-lg px-3">
+                              <Badge
+                                variant="secondary"
+                                className="bg-primary/10 text-primary hover:bg-primary/10 border-none rounded-lg px-3"
+                              >
                                 {app.consultation_type}
                               </Badge>
                               <span className="text-xs font-medium flex items-center gap-1">
@@ -252,7 +295,9 @@ function AdminPage() {
                           </div>
                         </div>
                         <div className="flex flex-col items-end gap-2">
-                           <Badge className="bg-green-100 text-green-700 border-none hover:bg-green-100 px-3 py-1 text-xs font-bold uppercase tracking-wider">New Lead</Badge>
+                          <Badge className="bg-green-100 text-green-700 border-none hover:bg-green-100 px-3 py-1 text-xs font-bold uppercase tracking-wider">
+                            New Lead
+                          </Badge>
                         </div>
                       </div>
                     </CardHeader>
@@ -261,19 +306,31 @@ function AdminPage() {
                         {/* Contact Info */}
                         <div className="space-y-4">
                           <h4 className="text-xs font-black uppercase tracking-widest text-muted-foreground/60 flex items-center gap-2">
-                             <User className="h-3.5 w-3.5" /> Contact Details
+                            <User className="h-3.5 w-3.5" /> Contact Details
                           </h4>
                           <div className="space-y-2.5">
-                            <a href={`mailto:${app.email}`} className="flex items-center gap-3 text-sm font-medium hover:text-primary transition-colors">
-                              <div className="w-8 h-8 rounded-lg bg-slate-50 flex items-center justify-center border border-slate-100"><Mail className="h-4 w-4 text-slate-400" /></div>
+                            <a
+                              href={`mailto:${app.email}`}
+                              className="flex items-center gap-3 text-sm font-medium hover:text-primary transition-colors"
+                            >
+                              <div className="w-8 h-8 rounded-lg bg-slate-50 flex items-center justify-center border border-slate-100">
+                                <Mail className="h-4 w-4 text-slate-400" />
+                              </div>
                               {app.email}
                             </a>
-                            <a href={`tel:${app.phone}`} className="flex items-center gap-3 text-sm font-medium hover:text-primary transition-colors">
-                              <div className="w-8 h-8 rounded-lg bg-slate-50 flex items-center justify-center border border-slate-100"><Phone className="h-4 w-4 text-slate-400" /></div>
+                            <a
+                              href={`tel:${app.phone}`}
+                              className="flex items-center gap-3 text-sm font-medium hover:text-primary transition-colors"
+                            >
+                              <div className="w-8 h-8 rounded-lg bg-slate-50 flex items-center justify-center border border-slate-100">
+                                <Phone className="h-4 w-4 text-slate-400" />
+                              </div>
                               {app.phone}
                             </a>
                             <div className="flex items-center gap-3 text-sm font-medium">
-                              <div className="w-8 h-8 rounded-lg bg-slate-50 flex items-center justify-center border border-slate-100"><MapPin className="h-4 w-4 text-slate-400" /></div>
+                              <div className="w-8 h-8 rounded-lg bg-slate-50 flex items-center justify-center border border-slate-100">
+                                <MapPin className="h-4 w-4 text-slate-400" />
+                              </div>
                               {app.city}
                             </div>
                           </div>
@@ -282,18 +339,30 @@ function AdminPage() {
                         {/* Background Info */}
                         <div className="space-y-4">
                           <h4 className="text-xs font-black uppercase tracking-widest text-muted-foreground/60 flex items-center gap-2">
-                             <GraduationCap className="h-3.5 w-3.5" /> Education & Career
+                            <GraduationCap className="h-3.5 w-3.5" /> Education & Career
                           </h4>
                           <div className="space-y-3">
                             <div className="bg-slate-50/50 rounded-2xl p-4 border border-slate-100">
-                              <div className="text-xs text-muted-foreground font-bold uppercase tracking-tight mb-1">Education</div>
-                              <div className="text-sm font-bold text-foreground">{app.qualification}</div>
-                              <div className="text-xs font-medium text-slate-500">{app.field_of_study}</div>
+                              <div className="text-xs text-muted-foreground font-bold uppercase tracking-tight mb-1">
+                                Education
+                              </div>
+                              <div className="text-sm font-bold text-foreground">
+                                {app.qualification}
+                              </div>
+                              <div className="text-xs font-medium text-slate-500">
+                                {app.field_of_study}
+                              </div>
                             </div>
                             <div className="bg-slate-50/50 rounded-2xl p-4 border border-slate-100">
-                              <div className="text-xs text-muted-foreground font-bold uppercase tracking-tight mb-1">Professional</div>
-                              <div className="text-sm font-bold text-foreground">{app.employment_status} • {app.experience_years}</div>
-                              <div className="text-xs font-medium text-slate-500">{app.job_title} {app.industry ? `(${app.industry})` : ""}</div>
+                              <div className="text-xs text-muted-foreground font-bold uppercase tracking-tight mb-1">
+                                Professional
+                              </div>
+                              <div className="text-sm font-bold text-foreground">
+                                {app.employment_status} • {app.experience_years}
+                              </div>
+                              <div className="text-xs font-medium text-slate-500">
+                                {app.job_title} {app.industry ? `(${app.industry})` : ""}
+                              </div>
                             </div>
                           </div>
                         </div>
@@ -301,13 +370,15 @@ function AdminPage() {
                         {/* Goal */}
                         <div className="space-y-4">
                           <h4 className="text-xs font-black uppercase tracking-widest text-muted-foreground/60 flex items-center gap-2">
-                             <Target className="h-3.5 w-3.5" /> Immigration Goal
+                            <Target className="h-3.5 w-3.5" /> Immigration Goal
                           </h4>
                           <div className="bg-primary/5 rounded-2xl p-5 border border-primary/10 relative overflow-hidden">
                             <div className="absolute top-0 right-0 p-2 opacity-10">
                               <MapPin className="h-12 w-12" />
                             </div>
-                            <div className="text-xs text-primary font-bold uppercase tracking-tight mb-2">Destination: {app.destination}</div>
+                            <div className="text-xs text-primary font-bold uppercase tracking-tight mb-2">
+                              Destination: {app.destination}
+                            </div>
                             <p className="text-sm font-medium text-foreground leading-relaxed italic">
                               "{app.goal_description}"
                             </p>
@@ -327,7 +398,10 @@ function AdminPage() {
           <TabsContent value="enquiries" className="mt-0">
             <div className="grid gap-4">
               {enquiries.map((enquiry) => (
-                <div key={enquiry.id} className="bg-white rounded-[1.5rem] border border-slate-100 shadow-sm p-6 hover:shadow-md transition-shadow group">
+                <div
+                  key={enquiry.id}
+                  className="bg-white rounded-[1.5rem] border border-slate-100 shadow-sm p-6 hover:shadow-md transition-shadow group"
+                >
                   <div className="flex flex-col md:flex-row md:items-start gap-4">
                     <div className="w-12 h-12 rounded-xl bg-slate-100 text-slate-600 flex items-center justify-center text-lg font-bold shrink-0 group-hover:bg-primary/10 group-hover:text-primary transition-colors">
                       {enquiry.name.charAt(0).toUpperCase()}
@@ -338,15 +412,21 @@ function AdminPage() {
                           <span className="font-bold text-foreground flex items-center gap-1.5">
                             {enquiry.name}
                           </span>
-                          <a href={`mailto:${enquiry.email}`} className="text-primary text-sm font-medium flex items-center gap-1.5 hover:underline">
+                          <a
+                            href={`mailto:${enquiry.email}`}
+                            className="text-primary text-sm font-medium flex items-center gap-1.5 hover:underline"
+                          >
                             <Mail className="h-3.5 w-3.5" /> {enquiry.email}
                           </a>
-                          <a href={`tel:${enquiry.phone}`} className="text-sm text-muted-foreground font-medium flex items-center gap-1.5 hover:underline">
+                          <a
+                            href={`tel:${enquiry.phone}`}
+                            className="text-sm text-muted-foreground font-medium flex items-center gap-1.5 hover:underline"
+                          >
                             <Phone className="h-3.5 w-3.5" /> {enquiry.phone}
                           </a>
                         </div>
                         <div className="text-[10px] font-black uppercase tracking-widest text-slate-400 bg-slate-50 px-2.5 py-1 rounded-full">
-                           {new Date(enquiry.created_at).toLocaleDateString()}
+                          {new Date(enquiry.created_at).toLocaleDateString()}
                         </div>
                       </div>
                       <p className="text-sm text-foreground/80 bg-slate-50/50 rounded-xl px-4 py-3 border border-slate-100/50 leading-relaxed italic">

@@ -34,13 +34,12 @@ export function Navbar() {
       }`}
     >
       <div className="container mx-auto px-6 h-16 flex items-center justify-between">
-        
         {/* UPDATED LOGO BLOCK */}
         <Link to="/" className="flex items-center group">
-          <img 
-            src="/logo.jpeg" 
-            alt="bluedotImmigrations Logo" 
-            className="h-10 md:h-12 w-auto object-contain bg-white rounded px-2 py-1 shadow-sm transition-transform duration-300 group-hover:scale-105" 
+          <img
+            src="/logo.jpeg"
+            alt="bluedotImmigrations Logo"
+            className="h-10 md:h-12 w-auto object-contain bg-white rounded px-2 py-1 shadow-sm transition-transform duration-300 group-hover:scale-105"
           />
         </Link>
 
@@ -94,7 +93,9 @@ export function Navbar() {
               </Link>
             ))}
             <Button asChild size="sm">
-              <Link to="/schedule" onClick={() => setOpen(false)}>Get Consultation</Link>
+              <Link to="/schedule" onClick={() => setOpen(false)}>
+                Get Consultation
+              </Link>
             </Button>
           </div>
         </div>

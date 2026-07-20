@@ -108,11 +108,14 @@ function RootShell({ children }: { children: React.ReactNode }) {
   );
 }
 
+import { CustomCursor } from "@/components/site/CustomCursor";
+
 function RootComponent() {
   const { queryClient } = Route.useRouteContext();
 
   return (
     <QueryClientProvider client={queryClient}>
+      <CustomCursor />
       <Outlet />
     </QueryClientProvider>
   );

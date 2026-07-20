@@ -7,28 +7,47 @@ export function Footer() {
       <div className="container mx-auto px-6 py-10">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-12 mb-10">
           <div className="space-y-6">
-            
             {/* UPDATED LOGO BLOCK */}
             <div className="flex items-center">
-              <img 
-                src="/logo.jpeg" 
-                alt="bluedotImmigrations Logo" 
-                className="h-12 md:h-14 w-auto object-contain bg-white rounded px-2 py-1" 
+              <img
+                src="/logo.jpeg"
+                alt="bluedotImmigrations Logo"
+                className="h-12 md:h-14 w-auto object-contain bg-white rounded px-2 py-1"
               />
             </div>
 
             <p className="text-sm text-primary-foreground/70 leading-relaxed max-w-xs">
-              Expert guidance for visas, study abroad, work permits, and permanent residency worldwide.
+              Expert guidance for visas, study abroad, work permits, and permanent residency
+              worldwide.
             </p>
           </div>
-          
+
           <div>
             <h4 className="font-semibold mb-6 uppercase tracking-wider text-sm">Quick Links</h4>
             <ul className="space-y-4 text-sm text-primary-foreground/70">
-              <li><Link to="/" className="hover:text-primary-foreground transition-colors">Home</Link></li>
-              <li><Link to="/services" className="hover:text-primary-foreground transition-colors">Services</Link></li>
-              <li><Link to="/testimonials" className="hover:text-primary-foreground transition-colors">Testimonials</Link></li>
-              <li><Link to="/contact" className="hover:text-primary-foreground transition-colors">Contact</Link></li>
+              <li>
+                <Link to="/" className="hover:text-primary-foreground transition-colors">
+                  Home
+                </Link>
+              </li>
+              <li>
+                <Link to="/services" className="hover:text-primary-foreground transition-colors">
+                  Services
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to="/testimonials"
+                  className="hover:text-primary-foreground transition-colors"
+                >
+                  Testimonials
+                </Link>
+              </li>
+              <li>
+                <Link to="/contact" className="hover:text-primary-foreground transition-colors">
+                  Contact
+                </Link>
+              </li>
             </ul>
           </div>
 
@@ -53,11 +72,23 @@ export function Footer() {
 
         <div className="border-t border-primary-foreground/10 pt-8 flex flex-col md:flex-row items-center justify-between gap-4">
           <p className="text-sm text-primary-foreground/60">
-            © {new Date().getFullYear()} bluedotImmigration. All rights reserved. | Developed by <a href="https://openalgon.com/" target="_blank" rel="noopener noreferrer" className="hover:text-primary-foreground transition-colors underline">OpenAlgon</a>
+            © {new Date().getFullYear()} bluedotImmigration. All rights reserved. | Developed by{" "}
+            <a
+              href="https://openalgon.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:text-primary-foreground transition-colors underline"
+            >
+              OpenAlgon
+            </a>
           </p>
           <div className="flex gap-6 text-sm text-primary-foreground/60">
-            <Link to="/" className="hover:text-primary-foreground transition-colors">Terms of Service</Link>
-            <Link to="/" className="hover:text-primary-foreground transition-colors">Cookie Policy</Link>
+            <Link to="/" className="hover:text-primary-foreground transition-colors">
+              Terms of Service
+            </Link>
+            <Link to="/" className="hover:text-primary-foreground transition-colors">
+              Cookie Policy
+            </Link>
           </div>
         </div>
       </div>

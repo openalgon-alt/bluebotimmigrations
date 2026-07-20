@@ -24,7 +24,7 @@ export function Contact() {
     try {
       const { error } = await supabase.from("enquiries").insert([data]);
       if (error) throw error;
-      
+
       toast.success("Inquiry sent! Our team will reach out within 24 hours.");
       form.reset();
     } catch (error) {
@@ -34,7 +34,6 @@ export function Contact() {
       setLoading(false);
     }
   };
-
 
   return (
     <section id="contact" className="py-24">
@@ -81,16 +80,16 @@ export function Contact() {
                   <MapPin className="h-5 w-5 mt-0.5 shrink-0" />
                   <div>
                     <div className="text-xs uppercase text-primary-foreground/70">Office</div>
-                    <div className="text-sm font-medium">
-                      Hyderabad, India
-                    </div>
+                    <div className="text-sm font-medium">Hyderabad, India</div>
                   </div>
                 </div>
               </div>
             </div>
             <div className="bg-card border border-border rounded-2xl p-6 shadow-card">
               <div className="text-sm font-semibold text-foreground">Office hours</div>
-              <div className="mt-2 text-sm text-muted-foreground">Mon — Fri · 9:00 AM – 6:00 PM</div>
+              <div className="mt-2 text-sm text-muted-foreground">
+                Mon — Fri · 9:00 AM – 6:00 PM
+              </div>
               <div className="text-sm text-muted-foreground">Sat · 10:00 AM – 2:00 PM</div>
             </div>
           </div>
@@ -106,7 +105,13 @@ export function Contact() {
               </div>
               <div className="space-y-2">
                 <Label htmlFor="email">Email</Label>
-                <Input id="email" name="email" type="email" required placeholder="jane@example.com" />
+                <Input
+                  id="email"
+                  name="email"
+                  type="email"
+                  required
+                  placeholder="jane@example.com"
+                />
               </div>
             </div>
             <div className="space-y-2">

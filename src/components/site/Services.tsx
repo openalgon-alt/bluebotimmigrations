@@ -1,4 +1,12 @@
-import { Globe, MapPin, Landmark, Shield, Briefcase, GraduationCap, ArrowRight } from "lucide-react";
+import {
+  Globe,
+  MapPin,
+  Landmark,
+  Shield,
+  Briefcase,
+  GraduationCap,
+  ArrowRight,
+} from "lucide-react";
 import { Link } from "@tanstack/react-router";
 
 const services = [
@@ -89,8 +97,8 @@ export function Services() {
             Immigration solutions, tailored to you
           </h2>
           <p className="mt-4 text-muted-foreground">
-            From your first consultation to landing in your new country, we
-            handle every step with clarity and care.
+            From your first consultation to landing in your new country, we handle every step with
+            clarity and care.
           </p>
         </div>
 
@@ -107,19 +115,23 @@ export function Services() {
                     {s.country}
                   </span>
                 </div>
-                
-                <h3 className="mt-6 text-xl font-semibold text-foreground">
-                  {s.title}
-                </h3>
+
+                <h3 className="mt-6 text-xl font-semibold text-foreground">{s.title}</h3>
                 <p className="mt-3 text-sm text-muted-foreground leading-relaxed flex-grow">
                   {s.desc}
                 </p>
-                
+
                 <ul className="mt-5 space-y-2 mb-2">
                   {s.highlights.map((h) => (
                     <li key={h} className="flex items-start gap-2 text-sm text-foreground/80">
                       <span className="inline-flex items-center justify-center h-5 w-5 rounded-full bg-primary/10 text-primary shrink-0 mt-0.5">
-                        <svg className="h-3 w-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}>
+                        <svg
+                          className="h-3 w-3"
+                          fill="none"
+                          viewBox="0 0 24 24"
+                          stroke="currentColor"
+                          strokeWidth={3}
+                        >
                           <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
                         </svg>
                       </span>
@@ -135,7 +147,7 @@ export function Services() {
                     <ArrowRight className="ml-1.5 h-4 w-4 transition-transform group-hover:translate-x-1" />
                   </div>
                 )}
-                
+
                 <span className="absolute top-6 right-6 text-xs font-mono text-muted-foreground/40 hidden">
                   0{i + 1}
                 </span>
@@ -143,7 +155,8 @@ export function Services() {
             );
 
             // Universal classes for the card exterior
-            const cardClasses = "group relative bg-white/70 backdrop-blur-sm rounded-2xl p-8 border border-white/60 shadow-card hover:shadow-elegant hover:-translate-y-1 transition-all duration-300 flex flex-col h-full";
+            const cardClasses =
+              "group relative bg-white/70 backdrop-blur-sm rounded-2xl p-8 border border-white/60 shadow-card hover:shadow-elegant hover:-translate-y-1 transition-all duration-300 flex flex-col h-full";
 
             // If the service has a link, render a TanStack Link, otherwise a standard article div
             return s.link ? (
